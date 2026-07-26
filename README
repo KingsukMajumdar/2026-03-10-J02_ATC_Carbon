@@ -1,198 +1,213 @@
-# Data Repository -- IEEE Transactions on Reliability
-## Manuscript TR-2026-712
+# 🔌 Reliability-Constrained ATC Assessment using DNN Surrogate
 
-**Title:** Reliability-Constrained Available Transfer Capability Assessment
-using Deep Neural Network Surrogate: Real Renewable Energy Uncertainty
-and Carbon Budget Constraint
+> **IEEE Transactions on Reliability** | Manuscript No. TR-2026-712
 
-**Authors:** Kingsuk Majumdar (BCREC, Durgapur), Sohini Ghosh (BCREC),
-Nishant Kumar (IIT Jodhpur)
-
-**DOI:** https://doi.org/10.5281/zenodo.19753213
-
----
-
-## Repository Contents
-
-This repository provides the data, pre-trained model weights, simulation
-results, and validation figures that support the findings of the manuscript.
-Simulation pipeline scripts are available from the corresponding author
-upon reasonable request (kingsuk.majumdar@bcrec.ac.in).
-
----
-
-## 1. Pre-trained DNN Surrogate Model Weights
-
-These `.pt` files can be loaded directly in PyTorch (>=2.0) without
-retraining to reproduce all DNN surrogate predictions in the paper.
-
-| File | System | n\_in | Architecture | R² | MAE (PU) |
-|------|--------|-------|-------------|-----|---------|
-| `surrogate_case30.pt` | IEEE 30-bus | 80 | [256,512,256,128] | 0.9975 | 0.0037 |
-| `surrogate_case118.pt` | IEEE 118-bus | 324 | [256,512,256,128] | 0.9675 | 0.0239 |
-| `surrogate_nrpg246.pt` | NRPG 246-bus | 554 | [512,1024,512,256] | 0.9999 | 0.000270 |
-
-**How to load (Python):**
-```python
-import torch
-ck = torch.load('surrogate_case30.pt', map_location='cpu',
-                weights_only=False)
-# Keys: n_in, state_dict, y_mean, y_std, hidden
-# y_mean=0.6484, y_std=0.1003 for case30
+```text
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19753213.svg)](https://doi.org/10.5281/zenodo.19753213)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.9.0-red.svg)](https://pytorch.org/)
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey.svg)]()
 ```
 
 ---
 
-## 2. Original Experiment Results (30-trial CC-OSHO)
+## 📋 About
 
-These files contain the full 30-trial reliability-constrained results
-reported in Tables VI, VII, X, XI, XII, XIII of the manuscript.
+This repository contains the **data, pre-trained DNN surrogate model weights,
+simulation results, and validation figures** for the paper:
 
-| File | Contents | Manuscript table |
-|------|----------|-----------------|
-| `S4_full_results.json` | E[ATC], VaR90, CE, Friedman ranks -- IEEE 30-bus and 118-bus | Tab. VI, VII, X, XI |
-| `S6_nrpg246_results.json` | E[ATC], VaR90 -- NRPG 246-bus (30 trials) | Tab. XII, XIII |
-| `S6c_results.json` | Carbon results -- NRPG 246-bus | Tab. XII |
-| `S2_baseline_results.json` | Deterministic ATC baseline (5 trials) | Tab. V |
-| `S3_cc_fitness_results.json` | Stochastic fitness evaluation results | -- |
+> **"Reliability-Constrained Available Transfer Capability Assessment
+> using Deep Neural Network Surrogate: Real Renewable Energy Uncertainty
+> and Carbon Budget Constraint"**
+>
+> K. Majumdar · S. Ghosh · N. Kumar
+> *IEEE Transactions on Reliability*, 2026
 
----
+### ✨ Key Highlights
 
-## 3. DNN Surrogate Validation (Tab. I of manuscript)
-
-| File | Contents |
-|------|----------|
-| `S07_data02_dnn_validation_summary.csv` | R², RMSE, MAE on held-out test sets (n=1500/1000) |
-
-**Key values (Tab. I):**
-
-| System | n\_test | R² | RMSE (PU) | MAE (PU) |
-|--------|---------|-----|-----------|---------|
-| IEEE 30-bus | 1500 | 0.9975 | 0.0049 | 0.0037 |
-| IEEE 118-bus | 1500 | 0.9675 | 0.0367 | 0.0239 |
-| NRPG 246-bus | 1000 | 0.9999 | 0.000270 | 0.000270 |
-
-**Figures:**
-- `S07_fig01_error_histogram_case30.png` -- Error histogram, IEEE 30-bus
-- `S07_fig02_error_histogram_case118.png` -- Error histogram, IEEE 118-bus
-- `S07_fig04_residual_scatter.png` -- Residual scatter, both IEEE systems
+| Feature | Detail |
+|---------|--------|
+| 🤖 DNN Surrogate | R² = 0.9975 / 0.9675 / 0.9999 on three power systems |
+| ⚡ Speedup | ~1400× faster than full AC-OPF solver |
+| 🌿 Carbon-Aware | Soft penalty guidance term in fitness function |
+| 📊 Reliability | VaR₉₀ constraint on ATC distribution |
+| 🗺️ Systems | IEEE 30-bus · IEEE 118-bus · NRPG 246-bus (India) |
+| 🔍 Validation | 500 independent out-of-sample NREL scenarios |
 
 ---
 
-## 4. Surrogate Model Comparison (Tab. II of manuscript)
+## 🗂️ Repository Structure
 
-| File | Contents |
-|------|----------|
-| `S11_data02_model_comparison.csv` | R², RMSE, MAE for DNN vs Linear Regression vs Random Forest |
-
-**Key finding:** DNN achieves 41--48% lower MAE than LR and RF on
-IEEE 118-bus; on IEEE 30-bus the 80 engineered features linearise the
-ATC mapping so LR achieves R²=0.9999.
-
-**Figures:**
-- `S11_fig01_model_comparison_bar.png`
-- `S11_fig02_scatter_comparison.png`
-- `S11_fig03_error_distribution.png`
-
----
-
-## 5. Out-of-Sample Validation (Tab. VIII of manuscript)
-
-| File | Contents |
-|------|----------|
-| `S08_data02_oos_summary.csv` | OOS E[ATC], VaR90, bias for all 5 algorithms x 3 systems |
-
-**Key finding:** Maximum OOS bias = +2.06% (GWO, IEEE 118-bus).
-All biases positive -- in-sample results are conservative, not optimistic.
-
-**Figures:**
-- `S08_fig01_oos_eatc_case30.png`
-- `S08_fig02_oos_eatc_case118.png`
-- `S08_fig03_oos_eatc_nrpg.png`
+```
+📦 TR-2026-712
+ ┣ 📂 FIGURES/                    # All validation figures
+ ┃  ┣ 🖼️ S07_fig01/02/04         # DNN error histograms + scatter
+ ┃  ┣ 🖼️ S08_fig01/02/03         # Out-of-sample validation charts
+ ┃  ┣ 🖼️ S09_fig01/02/03         # Carbon sensitivity curves
+ ┃  ┣ 🖼️ S10_fig01/02/03         # N-1 contingency analysis
+ ┃  ┣ 🖼️ S11_fig01/02/03         # Surrogate model comparison
+ ┃  └ 🖼️ fig1/2/3/4              # Original manuscript figures
+ ┣ 🧠 surrogate_case30.pt         # Pre-trained DNN -- IEEE 30-bus
+ ┣ 🧠 surrogate_case118.pt        # Pre-trained DNN -- IEEE 118-bus
+ ┣ 🧠 surrogate_nrpg246.pt        # Pre-trained DNN -- NRPG 246-bus
+ ┣ 📄 NRPG246_full.json           # NRPG 246-bus pandapower network
+ ┣ 📊 S07_data02_dnn_validation_summary.csv
+ ┣ 📊 S08_data02_oos_summary.csv
+ ┣ 📊 S09_data02_carbon_sensitivity.csv
+ ┣ 📊 S10_data02_n1_summary.csv
+ ┣ 📊 S11_data02_model_comparison.csv
+ ┣ 📊 S4_full_results.json        # Full 30-trial experiment results
+ ┣ 📊 S6_nrpg246_results.json     # NRPG 246-bus results
+ └ 📖 README.md
+```
 
 ---
 
-## 6. Carbon Budget Sensitivity (Tab. IX of manuscript)
+## 🧠 Pre-trained DNN Surrogate Models
 
-| File | Contents |
-|------|----------|
-| `S09_data02_carbon_sensitivity.csv` | E[ATC], CE achieved, binding rate for 7 CE budget levels |
+Three surrogate models are provided as PyTorch `.pt` files.
+Load them **directly without retraining** to reproduce all DNN predictions.
 
-**Key finding:** Physical minimum CE ~215 kg/h. Constraint binding
-at 90--100% rate only when budget >= 120% of moderate baseline.
+| Model | System | Input dim | Architecture | R² | MAE (PU) |
+|-------|--------|-----------|-------------|-----|---------|
+| `surrogate_case30.pt` | IEEE 30-bus | 80 | [256,512,256,128] | **0.9975** | 0.0037 |
+| `surrogate_case118.pt` | IEEE 118-bus | 324 | [256,512,256,128] | **0.9675** | 0.0239 |
+| `surrogate_nrpg246.pt` | NRPG 246-bus | 554 | [512,1024,512,256] | **0.9999** | 0.000270 |
 
-**Figures:**
-- `S09_fig01_atc_ce_tradeoff.png`
-- `S09_fig02_var90_ce_tradeoff.png`
-- `S09_fig03_binding_analysis.png`
+### Quick Load Example
 
----
+```python
+import torch
 
-## 7. N-1 Contingency Off-Deployment Study
+# Load IEEE 30-bus surrogate
+ck = torch.load('surrogate_case30.pt',
+                map_location='cpu',
+                weights_only=False)
 
-| File | Contents |
-|------|----------|
-| `S10_data02_n1_summary.csv` | MAE per contingency (34 lines + 7 trafos), IEEE 30-bus |
+print(f"n_in   = {ck['n_in']}")      # 80
+print(f"y_mean = {ck['y_mean']:.4f}") # 0.6484
+print(f"y_std  = {ck['y_std']:.4f}")  # 0.1003
 
-**Key finding:** Under non-critical N-1 line outages, MAE increases
-by 1.2x (0.153 to 0.180 PU). Monitored trafo outage: MAE = 0.642 PU
-(expected failure -- corridor removed).
-
-**Figures:**
-- `S10_fig01_error_by_contingency.png`
-- `S10_fig02_error_distribution.png`
-- `S10_fig03_normal_vs_n1.png`
-
----
-
-## 8. NRPG 246-Bus Network Data
-
-The NRPG 246-bus Northern Regional Power Grid of India data
-(originally from IIT Kanpur Power Systems Laboratory):
-
-| File | Contents |
-|------|----------|
-| `NRPG246_full.json` | Complete network: buses, lines, generators, transformers |
-| `NRPG246_branch.csv` | Branch data |
-| `NRPG246_bus.csv` | Bus data |
-| `NRPG-DATA.pdf` | Original NRPG data documentation |
+# Run inference
+from torch import nn
+# Build model with same architecture and load state_dict
+# See manuscript Sec. IV-A for full architecture details
+```
 
 ---
 
-## 9. Manuscript Source
+## 📊 Simulation Results
 
-| File | Contents |
-|------|----------|
-| `CC_OSHO_Paper_V28_coloured.tex` | LaTeX source of V28 manuscript |
-| `CC_OSHO_Paper.bib` | Bibliography file |
+### Original 30-Trial Experiment
 
----
+| File | Description |
+|------|-------------|
+| `S4_full_results.json` | E[ATC], VaR₉₀, CE, Friedman ranks — IEEE 30-bus and 118-bus |
+| `S6_nrpg246_results.json` | E[ATC], VaR₉₀ — NRPG 246-bus (30 trials) |
+| `S2_baseline_results.json` | Deterministic ATC baseline (5 trials) |
 
-## Environment
+### Major Revision Validation Results
 
-- Python 3.13.2
-- PyTorch 2.9.0 (CUDA 12.8)
-- pandapower 3.x
-- NumPy 2.3.3, SciPy 1.16.2, scikit-learn
-
----
-
-## Citation
-
-If you use this data, please cite:
-
-> K. Majumdar, S. Ghosh, N. Kumar, "Reliability-Constrained Available
-> Transfer Capability Assessment using Deep Neural Network Surrogate:
-> Real Renewable Energy Uncertainty and Carbon Budget Constraint,"
-> *IEEE Transactions on Reliability*, 2026.
-> DOI: 10.5281/zenodo.19753213
+| File | Manuscript Table | Key Finding |
+|------|-----------------|-------------|
+| `S07_data02_dnn_validation_summary.csv` | Tab. I | R²=0.9975/0.9675/0.9999 |
+| `S08_data02_oos_summary.csv` | Tab. VIII | Max OOS bias = +2.06% |
+| `S09_data02_carbon_sensitivity.csv` | Tab. IX | Binding at 120% budget |
+| `S10_data02_n1_summary.csv` | — | MAE ratio N-1/normal = 1.2× |
+| `S11_data02_model_comparison.csv` | Tab. II | DNN beats RF/LR by 41-48% MAE |
 
 ---
 
-## Contact
+## 🗺️ NRPG 246-Bus Network
 
-Kingsuk Majumdar, Ph.D.
-Department of Electrical Engineering
-Dr. B. C. Roy Engineering College (MAKAUT), Durgapur 713 206, India
-Email: kingsuk.majumdar@bcrec.ac.in
-ORCID: 0000-0001-7224-4862
+The `NRPG246_full.json` file contains a pandapower-compatible network
+object for the Northern Regional Power Grid of India:
+
+- 246 buses · 612 branches · 42 generators · 19,994.8 MW load
+- Monitored corridor: **Chamera–Jalandhar 400 kV** (bus 3 → bus 73)
+
+> **Data attribution:** The original NRPG 246-bus data was sourced from
+> the Power Systems Laboratory, IIT Kanpur, where it was publicly available
+> during the period of this research. Researchers requiring the original
+> MATPOWER case file should contact IIT Kanpur directly.
+> The `NRPG246_full.json` is a pandapower derivative for academic use only.
+
+---
+
+## 🔬 Results at a Glance
+
+### DNN Surrogate vs Baseline Models (IEEE 118-bus)
+
+| Model | R² | RMSE (PU) | MAE (PU) |
+|-------|-----|-----------|---------|
+| Linear Regression | 0.9096 | 0.0611 | 0.0406 |
+| Random Forest | 0.9005 | 0.0641 | 0.0458 |
+| **DNN (ours)** | **0.9675** | **0.0367** | **0.0239** |
+
+### Out-of-Sample Validation (500 independent scenarios)
+
+| System | Max OOS Bias | VaR₉₀ Generalises |
+|--------|-------------|------------------|
+| IEEE 30-bus | +1.40% (BBO) | ✅ Yes |
+| IEEE 118-bus | +2.06% (GWO) | ✅ Yes |
+| NRPG 246-bus | +0.004% (CSHO) | ✅ Yes |
+
+---
+
+## ⚙️ Software Environment
+
+```
+Python   3.13.2
+PyTorch  2.9.0  (CUDA 12.8)
+pandapower 3.x
+NumPy    2.3.3
+SciPy    1.16.2
+scikit-learn (latest)
+```
+
+Hardware: AMD Ryzen 9-8945HS · NVIDIA RTX 4060 (8 GB) · Manjaro Linux
+
+---
+
+## 📜 Citation
+
+If you use this data or model weights, please cite:
+
+```bibtex
+@article{majumdar2026atc,
+  author  = {Majumdar, Kingsuk and Ghosh, Sohini and Kumar, Nishant},
+  title   = {Reliability-Constrained Available Transfer Capability
+             Assessment using Deep Neural Network Surrogate: Real
+             Renewable Energy Uncertainty and Carbon Budget Constraint},
+  journal = {IEEE Transactions on Reliability},
+  year    = {2026},
+  doi     = {10.5281/zenodo.19753213}
+}
+```
+
+---
+
+## 🔗 Links
+
+| Resource | Link |
+|----------|------|
+| 📦 Zenodo (data + models) | https://doi.org/10.5281/zenodo.19753213 |
+| 🏫 BCREC, Durgapur | https://www.bcrec.ac.in |
+| 🔬 ORCID | https://orcid.org/0000-0001-7224-4862 |
+| 📧 Contact | kingsuk.majumdar@bcrec.ac.in |
+
+---
+
+## 📄 Licence
+
+Simulation results, pre-trained model weights, and figures are released
+under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The `NRPG246_full.json` is shared for academic research only;
+please acknowledge IIT Kanpur as the original data source.
+
+---
+
+<div align="center">
+<sub>Made with dedication at Tesla Research Lab, BCREC Durgapur · 2026</sub>
+</div>
