@@ -2,7 +2,7 @@
 
 <h1>⚡ Reliability-Constrained ATC Assessment using DNN Surrogate</h1>
 
-<p><strong>IEEE Transactions on Reliability</strong> &nbsp;|&nbsp; Manuscript No. TR-2026-712</p>
+<p><strong>IEEE Transactions on Reliability</strong> &nbsp;|&nbsp; Manuscript No. TR-2026-712 (Under review) </p>
 
 <a href="https://doi.org/10.5281/zenodo.19753213"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19753213.svg" alt="DOI"></a>&nbsp;
 <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="License"></a>&nbsp;
