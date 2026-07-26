@@ -2,13 +2,11 @@
 
 > **IEEE Transactions on Reliability** | Manuscript No. TR-2026-712
 
-```text
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19753213.svg)](https://doi.org/10.5281/zenodo.19753213)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.9.0-red.svg)](https://pytorch.org/)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey.svg)]()
-```
 
 ---
 
