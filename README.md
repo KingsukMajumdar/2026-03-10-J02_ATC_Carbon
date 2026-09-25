@@ -210,7 +210,7 @@ Northern Regional Power Grid of India:
 
 | | |
 |-|-|
-| 📦 Data (Zenodo v3.0) | https://doi.org/10.5281/zenodo.21607047 |
+| 📦 Data (Zenodo v3.1) | https://doi.org/10.5281/zenodo.21607047 |
 | 🏫 BCREC Durgapur | https://www.bcrec.ac.in |
 | 🔬 ORCID | https://orcid.org/0000-0001-7224-4862 |
 | 📧 Contact | kingsuk.majumdar@bcrec.ac.in |
