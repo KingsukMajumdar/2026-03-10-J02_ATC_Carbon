@@ -1,0 +1,162 @@
+{
+  "stage": "S3_Stochastic_Fitness",
+  "device": "cuda",
+  "n_mc": 50,
+  "lambda": 0.5,
+  "mu": 0.3,
+  "epsilon": 0.1,
+  "ce_budgets": {
+    "case30": {
+      "tight": 180.37,
+      "moderate": 225.47,
+      "relaxed": 270.56
+    },
+    "case118": {
+      "tight": 572.94,
+      "moderate": 644.55,
+      "relaxed": 680.36
+    }
+  },
+  "atc_min": {
+    "case30": 0.65,
+    "case118": 0.3
+  },
+  "results": {
+    "case30": {
+      "BBO": {
+        "e_atc_mean": 0.75811,
+        "e_atc_std": 0.01246,
+        "e_atc_best": 0.77403,
+        "var90_mean": 0.70325,
+        "ce_best": 247.533,
+        "constraint_met": true,
+        "time_s": 50.8,
+        "conv_first": 0.61966,
+        "conv_last": 0.77403
+      },
+      "GWO": {
+        "e_atc_mean": 0.77558,
+        "e_atc_std": 0.01263,
+        "e_atc_best": 0.7927,
+        "var90_mean": 0.70012,
+        "ce_best": 237.594,
+        "constraint_met": true,
+        "time_s": 52.2,
+        "conv_first": 0.64468,
+        "conv_last": 0.7927
+      },
+      "SHO": {
+        "e_atc_mean": 0.6372,
+        "e_atc_std": 0.00241,
+        "e_atc_best": 0.64152,
+        "var90_mean": 0.63501,
+        "ce_best": 476.078,
+        "constraint_met": false,
+        "time_s": 50.0,
+        "conv_first": 0.65642,
+        "conv_last": 0.64152
+      },
+      "CSHO": {
+        "e_atc_mean": 0.63625,
+        "e_atc_std": 0.00368,
+        "e_atc_best": 0.64089,
+        "var90_mean": 0.63463,
+        "ce_best": 436.857,
+        "constraint_met": false,
+        "time_s": 50.7,
+        "conv_first": 0.64106,
+        "conv_last": 0.64089
+      },
+      "OSHO": {
+        "e_atc_mean": 0.6365,
+        "e_atc_std": 0.00282,
+        "e_atc_best": 0.64182,
+        "var90_mean": 0.63479,
+        "ce_best": 441.075,
+        "constraint_met": false,
+        "time_s": 75.0,
+        "conv_first": 0.63794,
+        "conv_last": 0.64182
+      }
+    },
+    "case118": {
+      "BBO": {
+        "e_atc_mean": 0.83056,
+        "e_atc_std": 0.02971,
+        "e_atc_best": 0.86116,
+        "var90_mean": 0.72255,
+        "ce_best": 716.165,
+        "constraint_met": true,
+        "time_s": 57.5,
+        "conv_first": 0.25059,
+        "conv_last": 0.86116
+      },
+      "GWO": {
+        "e_atc_mean": 0.69672,
+        "e_atc_std": 0.01107,
+        "e_atc_best": 0.71121,
+        "var90_mean": 0.5638,
+        "ce_best": 716.165,
+        "constraint_met": true,
+        "time_s": 53.4,
+        "conv_first": 0.51127,
+        "conv_last": 0.71121
+      },
+      "SHO": {
+        "e_atc_mean": 0.40977,
+        "e_atc_std": 0.07008,
+        "e_atc_best": 0.49764,
+        "var90_mean": 0.34651,
+        "ce_best": 716.165,
+        "constraint_met": true,
+        "time_s": 54.1,
+        "conv_first": 0.29627,
+        "conv_last": 0.49764
+      },
+      "CSHO": {
+        "e_atc_mean": 0.3352,
+        "e_atc_std": 0.0408,
+        "e_atc_best": 0.3896,
+        "var90_mean": 0.31206,
+        "ce_best": 716.165,
+        "constraint_met": true,
+        "time_s": 54.1,
+        "conv_first": 0.35177,
+        "conv_last": 0.3896
+      },
+      "OSHO": {
+        "e_atc_mean": 0.3833,
+        "e_atc_std": 0.03284,
+        "e_atc_best": 0.43325,
+        "var90_mean": 0.33672,
+        "ce_best": 716.165,
+        "constraint_met": true,
+        "time_s": 80.4,
+        "conv_first": 0.30583,
+        "conv_last": 0.43325
+      }
+    }
+  },
+  "gates": {
+    "case30": {
+      "G1_scenario_integration": "True",
+      "G2_VaR90_lt_Emean": true,
+      "G3_VaR90_penalty": true,
+      "G4_CE_penalty": true,
+      "G5_CC_landscape_variation": true,
+      "G6_CC_differs_from_det": true,
+      "G7_ranking_consistent": true
+    },
+    "case118": {
+      "G1_scenario_integration": "True",
+      "G2_VaR90_lt_Emean": true,
+      "G3_VaR90_penalty": true,
+      "G4_CE_penalty": true,
+      "G5_CC_landscape_variation": true,
+      "G6_CC_differs_from_det": true,
+      "G7_ranking_consistent": true
+    }
+  },
+  "all_gates_pass": true,
+  "total_time_min": 9.7
+}
