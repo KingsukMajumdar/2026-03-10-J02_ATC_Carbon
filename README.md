@@ -200,7 +200,7 @@ Northern Regional Power Grid of India:
              Energy Uncertainty and Carbon Emission Penalty},
   journal = {IEEE Transactions on Reliability},
   year    = {2026},
-  doi     = {10.5281/zenodo.19753213}
+  doi     = {10.5281/zenodo.21607047}
 }
 ```
 
