@@ -4,7 +4,7 @@
 
 <p><strong>IEEE Transactions on Reliability -- Special Section TREL-RRMP</strong> &nbsp;|&nbsp; Manuscript No. TR-2026-712 (Under review) </p>
 
-<a href="https://doi.org/10.5281/zenodo.19753213"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19753213.svg" alt="DOI"></a>&nbsp;
+<a href="https://doi.org/10.5281/zenodo.21607047"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21607047.svg" alt="DOI"></a>&nbsp;
 <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="License"></a>&nbsp;
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.13-3776AB.svg?logo=python&logoColor=white" alt="Python"></a>&nbsp;
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.9.0-EE4C2C.svg?logo=pytorch&logoColor=white" alt="PyTorch"></a>&nbsp;
@@ -210,7 +210,7 @@ Northern Regional Power Grid of India:
 
 | | |
 |-|-|
-| 📦 Data (Zenodo v3.0) | https://doi.org/10.5281/zenodo.19753213 |
+| 📦 Data (Zenodo v3.0) | https://doi.org/10.5281/zenodo.21607047 |
 | 🏫 BCREC Durgapur | https://www.bcrec.ac.in |
 | 🔬 ORCID | https://orcid.org/0000-0001-7224-4862 |
 | 📧 Contact | kingsuk.majumdar@bcrec.ac.in |
