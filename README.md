@@ -4,7 +4,7 @@
 
 <p><strong>IEEE Transactions on Reliability -- Special Section TREL-RRMP</strong> &nbsp;|&nbsp; Manuscript No. TR-2026-712 (Under review) </p>
 
-<a href="https://doi.org/10.5281/zenodo.21607047"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.21607047.svg" alt="DOI"></a>&nbsp;
+<a href="[[https://doi.org/10.5281/zenodo.19753213](https://doi.org/10.5281/zenodo.19753213)](https://doi.org/10.5281/zenodo.19753213)"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19753213.svg" alt="DOI"></a>&nbsp;
 <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="License"></a>&nbsp;
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.13-3776AB.svg?logo=python&logoColor=white" alt="Python"></a>&nbsp;
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.9.0-EE4C2C.svg?logo=pytorch&logoColor=white" alt="PyTorch"></a>&nbsp;
@@ -26,7 +26,7 @@ simulation results, and validation figures** for the paper:
 > K. Majumdar · S. Ghosh · N. Kumar
 > *IEEE Transactions on Reliability (TREL-RRMP)*, 2026
 
-> **Version 3.0** -- Death penalty revision (September 2026).
+> **Version 3.1** -- Death penalty revision (September 2026).
 > Previous version 2.0 used a soft VaR penalty; v3.0 implements a
 > hard death penalty ($F = -\infty$ for infeasible solutions).
 
@@ -101,7 +101,7 @@ print(f"y_std  = {ck['y_std']:.4f}")  # 0.1003
 
 ## 📊 Simulation Results
 
-### v3.0 -- Death Penalty Experiment (30 trials, moderate CE budget)
+### v3.1 -- Death Penalty Experiment (30 trials, moderate CE budget)
 
 ATC_min = 0.62 PU (IEEE 30-bus), 0.25 PU (IEEE 118-bus), 0.30 PU (NRPG).
 Infeasible solutions (VaR₉₀ < ATC_min) assigned F = −∞ and rejected.
@@ -200,7 +200,7 @@ Northern Regional Power Grid of India:
              Energy Uncertainty and Carbon Emission Penalty},
   journal = {IEEE Transactions on Reliability},
   year    = {2026},
-  doi     = {10.5281/zenodo.21607047}
+  doi     = {10.5281/zenodo.19753213}
 }
 ```
 
@@ -210,7 +210,7 @@ Northern Regional Power Grid of India:
 
 | | |
 |-|-|
-| 📦 Data (Zenodo v3.1) | https://doi.org/10.5281/zenodo.21607047 |
+| 📦 Data (Zenodo v3.1) | https://doi.org/10.5281/zenodo.19753213 |
 | 🏫 BCREC Durgapur | https://www.bcrec.ac.in |
 | 🔬 ORCID | https://orcid.org/0000-0001-7224-4862 |
 | 📧 Contact | kingsuk.majumdar@bcrec.ac.in |
